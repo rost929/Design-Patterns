@@ -1,3 +1,4 @@
+import { COLORS } from '../helpers/colors.ts';
 /**
  * ! Abstract Factory:
  * Es un patrón de diseño que permite crear familias de objetos relacionados
@@ -39,22 +40,34 @@ interface Engine {
 
 // 2. Clases Concretas de Productos
 
-class ElectricCar {
+class ElectricCar implements Vehicle {
+  assemble(): void {
+    console.log("%cAssembling an electric car", COLORS.yellow);
+  }
   // Implementación del método assemble
   // 'Ensamblando un auto eléctrico'
 }
 
-class GasCar {
+class GasCar implements Vehicle {
+  assemble(): void {
+    console.log("%cAssembling a gas car", COLORS.gray);
+  }
   // Implementación del método assemble
   // 'Ensamblando un auto de combustión'
 }
 
-class ElectricEngine {
+class ElectricEngine implements Engine {
+  start(): void {
+    console.log("%cStarting electric engine", COLORS.yellow);
+  }
   // Implementación del método start
   // 'Arrancando motor eléctrico'
 }
 
-class GasEngine {
+class GasEngine implements Engine {
+  start(): void {
+    console.log("%cStarting gas engine", COLORS.gray);
+  }
   // Implementación del método start
   // 'Arrancando motor de combustión'
 }
@@ -69,10 +82,22 @@ interface VehicleFactory {
 // 4. Clases Concretas de Fábricas
 
 class ElectricVehicleFactory implements VehicleFactory {
+  createVehicle(): Vehicle {
+    return new ElectricCar;
+  }
+  createEngine(): Engine {
+    return new ElectricEngine;
+  }
   // Implementación de los métodos createVehicle y createEngine
 }
 
 class GasVehicleFactory implements VehicleFactory {
+  createVehicle(): Vehicle {
+    return new GasCar;
+  }
+  createEngine(): Engine {
+    return new GasEngine;
+  }
   // Implementación de los métodos createVehicle y createEngine
 }
 

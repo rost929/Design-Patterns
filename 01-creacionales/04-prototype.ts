@@ -1,3 +1,4 @@
+import { COLORS } from "../helpers/colors.ts";
 /**
  * ! Patrón Prototype:
 
@@ -9,3 +10,41 @@
  * 
  * https://refactoring.guru/es/design-patterns/prototype
  */
+class Document {
+  public title: string;
+  private content: string;
+  public author: string;
+
+  constructor(title: string, content: string, author: string) {
+    this.title = title;
+    this.content = content;
+    this.author = author;
+  }
+
+  clone(): Document {
+    return new Document(this.title, this.content, this.author);
+  }
+
+  displayInfo() {
+    console.log(
+      `%c
+        Title: ${this.title}
+        Content: ${this.content}
+        Author: ${this.author}
+        `,
+      COLORS.cyan
+    );
+  }
+}
+
+function main() {
+  const document1 = new Document("Quotation", "500 USD", "Juan");
+  console.log({ document1 });
+  document1.displayInfo();
+
+  const document2 = document1.clone();
+  console.log({ document2 });
+  document2.displayInfo();
+}
+
+main();

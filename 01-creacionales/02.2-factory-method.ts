@@ -47,6 +47,7 @@ class InventoryReport implements Report {
 
 // 3. Clase Base ReportFactory con el Método Factory
 abstract class ReportFactory {
+  
   protected abstract createReport(): Report;
 
   generateReport(): void {

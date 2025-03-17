@@ -31,10 +31,10 @@ class DatabaseConnection {
     // Completar: si no está conectado, mostrar mensaje de conexión
     if (this.connected) {
       console.log("%cThere is an existing connection already", COLORS.purple);
-    } else {
-      this.connected = true;
-      console.log("%cDB Connected", COLORS.green);
+      return;
     }
+    this.connected = true;
+    console.log("%cDB Connected", COLORS.green);
   }
 
   // Método para desconectar de la base de datos
